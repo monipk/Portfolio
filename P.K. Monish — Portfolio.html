@@ -927,6 +927,112 @@ html.js-ready .hero-reveal:nth-child(3) {
   }
 }
 
+/* ========================================
+   Formspree contact form
+   Added without changing existing defaults
+   ======================================== */
+.contact-form {
+  display: grid;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  padding-top: 1rem;
+}
+
+.contact-form-field {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.contact-form-label {
+  color: var(--muted);
+  font-size: var(--meta);
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  border-radius: 0;
+  background: transparent;
+  color: var(--ink);
+  font: inherit;
+  padding: 0.6rem 0;
+  outline: none;
+  transition: border-color 160ms ease;
+}
+
+.contact-form textarea {
+  min-height: 8rem;
+  resize: vertical;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: var(--muted);
+  opacity: 0.85;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-bottom-color: var(--accent);
+}
+
+.contact-form input:focus-visible,
+.contact-form textarea:focus-visible {
+  box-shadow: 0 2px 0 var(--accent);
+}
+
+.contact-form-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding-top: 0.4rem;
+}
+
+.contact-submit {
+  position: relative;
+  width: fit-content;
+  border: 0;
+  border-bottom: 1px solid var(--accent);
+  background: transparent;
+  color: var(--ink);
+  padding: 0.3rem 0 0.25rem;
+  font: inherit;
+  font-size: 0.92rem;
+  cursor: pointer;
+  transition: color 160ms ease, opacity 160ms ease;
+}
+
+.contact-submit:hover:not(:disabled) {
+  color: var(--accent);
+}
+
+.contact-submit:disabled {
+  cursor: wait;
+  opacity: 0.55;
+}
+
+.contact-form-status {
+  min-height: 1.4rem;
+  color: var(--accent);
+  font-size: 0.84rem;
+}
+
+.contact-form-status.error {
+  color: var(--muted);
+}
+
+.contact-form .hp-field {
+  position: absolute !important;
+  left: -10000px !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+  opacity: 0 !important;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -1202,11 +1308,71 @@ function renderProfile() {
     { label: "GitHub", value: "monipk", href: portfolioData.contact.github, external: true }
   ];
 
-  qs("#contact-links").innerHTML = contactItems.map((item) => {
-    const href = safeUrl(item.href);
-    const target = item.external ? ' target="_blank" rel="noreferrer noopener"' : "";
-    return `<a class="contact-link" href="${escapeHtml(href)}"${target}><span>${escapeHtml(item.label)}</span><span>${escapeHtml(item.value)}</span></a>`;
-  }).join("");
+  qs("#contact-links").innerHTML = `
+    <form
+      id="contact-form"
+      class="contact-form"
+      action="https://formspree.io/f/maenaywo"
+      method="POST"
+      accept-charset="UTF-8"
+      novalidate
+    >
+      <div class="contact-form-field">
+        <label class="contact-form-label" for="contact-name">Name</label>
+        <input
+          id="contact-name"
+          name="name"
+          type="text"
+          autocomplete="name"
+          maxlength="120"
+          placeholder="Your name"
+          required
+        >
+      </div>
+
+      <div class="contact-form-field">
+        <label class="contact-form-label" for="contact-email">Email</label>
+        <input
+          id="contact-email"
+          name="email"
+          type="email"
+          autocomplete="email"
+          maxlength="254"
+          placeholder="you@example.com"
+          required
+        >
+      </div>
+
+      <div class="contact-form-field">
+        <label class="contact-form-label" for="contact-message">Message</label>
+        <textarea
+          id="contact-message"
+          name="message"
+          rows="6"
+          maxlength="5000"
+          placeholder="Tell me what you'd like to build..."
+          required
+        ></textarea>
+      </div>
+
+      <input type="hidden" name="_subject" value="New portfolio message from P.K. Monish">
+      <div class="hp-field" aria-hidden="true">
+        <label for="contact-website">Leave this field empty</label>
+        <input id="contact-website" type="text" name="_gotcha" tabindex="-1" autocomplete="off">
+      </div>
+
+      <div class="contact-form-actions">
+        <button class="contact-submit" type="submit">Send message</button>
+        <div id="contact-form-status" class="contact-form-status" role="status" aria-live="polite"></div>
+      </div>
+    </form>
+
+    ${contactItems.map((item) => {
+      const href = safeUrl(item.href);
+      const target = item.external ? ' target="_blank" rel="noreferrer noopener"' : "";
+      return `<a class="contact-link" href="${escapeHtml(href)}"${target}><span>${escapeHtml(item.label)}</span><span>${escapeHtml(item.value)}</span></a>`;
+    }).join("")}
+  `;
 }
 
 function renderProjects() {
@@ -1362,6 +1528,63 @@ function bindMobileNav() {
   });
 }
 
+function bindContactForm() {
+  const form = qs("#contact-form");
+  const status = qs("#contact-form-status");
+  if (!form || !status) return;
+
+  const submitButton = qs('button[type="submit"]', form);
+
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    status.textContent = "";
+    status.classList.remove("error");
+
+    if (!form.reportValidity()) return;
+
+    const formData = new FormData(form);
+    if (String(formData.get("_gotcha") || "").trim()) return;
+
+    const originalLabel = submitButton.textContent;
+    submitButton.disabled = true;
+    submitButton.textContent = "Sending…";
+
+    try {
+      const response = await fetch(form.action, {
+        method: "POST",
+        body: formData,
+        headers: {
+          Accept: "application/json"
+        }
+      });
+
+      if (!response.ok) {
+        let message = "Something went wrong. Please try again.";
+        try {
+          const data = await response.json();
+          if (Array.isArray(data?.errors) && data.errors.length) {
+            message = data.errors.map((error) => error.message).filter(Boolean).join(" ") || message;
+          }
+        } catch {
+          // Keep the friendly fallback message.
+        }
+        throw new Error(message);
+      }
+
+      form.reset();
+      status.textContent = "Thanks — your message has been sent.";
+    } catch (error) {
+      status.classList.add("error");
+      status.textContent = error instanceof Error
+        ? error.message
+        : "Unable to send your message right now. Please try again.";
+    } finally {
+      submitButton.disabled = false;
+      submitButton.textContent = originalLabel;
+    }
+  });
+}
+
 function bindSectionState() {
   const links = qsa("#primary-nav a");
   const sections = links
@@ -1391,6 +1614,7 @@ function init() {
   renderFooter();
   bindTheme();
   bindMobileNav();
+  bindContactForm();
   bindSectionState();
 }
 
