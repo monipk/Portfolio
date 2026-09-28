@@ -1,0 +1,1401 @@
+<!doctype html>
+<html lang="en" data-theme="system">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Portfolio of P.K. Monish, a B.Tech Information Technology student building privacy-focused AI tools and full-stack web applications.">
+  <meta name="theme-color" content="#FAFAF8">
+  <meta property="og:title" content="P.K. Monish — AI & Full-Stack Developer">
+  <meta property="og:description" content="Portfolio of P.K. Monish, a B.Tech Information Technology student building privacy-focused AI tools and full-stack web applications.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://your-domain.example/">
+  <link rel="canonical" href="https://your-domain.example/">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCIgcm9sZT0iaW1nIiBhcmlhLWxhYmVsPSJQTSI+CiAgPHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiBmaWxsPSIjRkFGQUY4Ii8+CiAgPHBhdGggZD0iTTE2IDQ4VjE2aDEzYzkgMCAxNCA0IDE0IDExcy01IDExLTE0IDExaC03djEwem02LTE1aDdjNSAwIDgtMiA4LTZzLTMtNi04LTZoLTd6IiBmaWxsPSIjMTQxNDE0Ii8+Cjwvc3ZnPgo=">
+  <title>P.K. Monish — AI & Full-Stack Developer</title>
+  <script>
+    (() => {
+      const saved = localStorage.getItem('pm-theme');
+      const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      document.documentElement.dataset.theme = saved === 'light' || saved === 'dark' ? saved : (systemDark ? 'dark' : 'light');
+    })();
+  </script>
+  <style>
+:root {
+  color-scheme: light dark;
+  --bg: #FAFAF8;
+  --surface: #FAFAF8;
+  --ink: #141414;
+  --muted: #64645f;
+  --line: #d9d9d4;
+  --accent: #2A4BD7;
+  --serif: "Fraunces", "Newsreader", Georgia, "Times New Roman", serif;
+  --sans: "Inter", "Geist", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --max: 1240px;
+  --gutter: clamp(1rem, 2.7vw, 2.35rem);
+  --display: clamp(4.2rem, 10.4vw, 9.7rem);
+  --h1: clamp(3rem, 7vw, 6.8rem);
+  --h2: clamp(2.2rem, 4.4vw, 4.3rem);
+  --h3: clamp(1.6rem, 2.5vw, 2.4rem);
+  --body-lg: clamp(1.2rem, 1.7vw, 1.65rem);
+  --body: 1rem;
+  --meta: 0.82rem;
+  --utility: 0.72rem;
+  --ease: cubic-bezier(.22, .61, .36, 1);
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+  --bg: #FAFAF8;
+  --surface: #FAFAF8;
+  --ink: #141414;
+  --muted: #64645f;
+  --line: #d9d9d4;
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #141414;
+  --surface: #141414;
+  --ink: #FAFAF8;
+  --muted: #a9a9a2;
+  --line: #343430;
+}
+
+:root[data-theme="system"] {
+  color-scheme: light dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root[data-theme="system"] {
+    --bg: #141414;
+    --surface: #141414;
+    --ink: #FAFAF8;
+    --muted: #a9a9a2;
+    --line: #343430;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+  background: var(--bg);
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: var(--body);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+.site-root {
+  min-height: 100vh;
+  background: light-dark(#FAFAF8, #141414);
+  border-radius: 0;
+}
+
+button,
+a {
+  color: inherit;
+}
+
+button {
+  font: inherit;
+}
+
+a {
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.18em;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+}
+
+::selection {
+  background: var(--accent);
+  color: #ffffff;
+}
+
+.skip-link {
+  position: fixed;
+  top: 0.75rem;
+  left: 0.75rem;
+  z-index: 1000;
+  padding: 0.65rem 0.8rem;
+  background: var(--ink);
+  color: var(--bg);
+  transform: translateY(-180%);
+  transition: transform 180ms var(--ease);
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+.shell {
+  width: min(calc(100% - (2 * var(--gutter))), var(--max));
+  margin-inline: auto;
+}
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: color-mix(in srgb, var(--bg) 94%, transparent);
+  border-bottom: 1px solid var(--line);
+  backdrop-filter: blur(8px);
+}
+
+.nav-shell {
+  min-height: 4.35rem;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 1rem;
+}
+
+.wordmark {
+  width: fit-content;
+  text-decoration: none;
+  font-size: 0.94rem;
+  letter-spacing: -0.02em;
+  font-weight: 600;
+}
+
+.primary-nav {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: clamp(1rem, 2vw, 1.7rem);
+}
+
+.primary-nav a,
+.theme-toggle,
+.nav-toggle {
+  border: 0;
+  background: transparent;
+  padding: 0.5rem 0;
+  text-decoration: none;
+  font-size: 0.86rem;
+  color: var(--muted);
+  transition: color 160ms ease, transform 160ms ease;
+}
+
+.primary-nav a:hover,
+.primary-nav a[aria-current="page"],
+.theme-toggle:hover,
+.nav-toggle:hover {
+  color: var(--ink);
+}
+
+.theme-toggle {
+  cursor: pointer;
+  min-width: 4.2rem;
+  text-align: right;
+}
+
+.nav-toggle {
+  display: none;
+  cursor: pointer;
+}
+
+.hero {
+  min-height: min(900px, calc(100svh - 4.35rem));
+  padding-block: clamp(5.5rem, 13vw, 10rem) clamp(5rem, 10vw, 8rem);
+  display: grid;
+  grid-template-columns: 1.1fr 4.8fr 2fr;
+  gap: clamp(1.25rem, 3vw, 3rem);
+  align-items: end;
+}
+
+.hero-index {
+  align-self: start;
+  padding-top: 0.7rem;
+  color: var(--muted);
+  font-size: var(--utility);
+  letter-spacing: 0.08em;
+}
+
+.hero-main {
+  max-width: 850px;
+}
+
+.hero-name {
+  margin: 0 0 1.6rem;
+  color: var(--muted);
+  font-size: 0.96rem;
+  letter-spacing: -0.01em;
+}
+
+.hero h1 {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: var(--h1);
+  font-weight: 500;
+  letter-spacing: -0.055em;
+  line-height: 0.93;
+  text-wrap: balance;
+}
+
+.hero-side {
+  max-width: 27rem;
+  padding-bottom: 0.35rem;
+}
+
+.hero-side > p:first-child {
+  margin: 0;
+  font-size: var(--body-lg);
+  line-height: 1.43;
+  letter-spacing: -0.015em;
+}
+
+.action-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  margin-top: 2rem;
+}
+
+.text-link {
+  position: relative;
+  width: fit-content;
+  color: var(--ink);
+  text-decoration: none;
+  font-size: 0.92rem;
+  padding-bottom: 0.25rem;
+}
+
+.text-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background: var(--accent);
+  transform: scaleX(0.35);
+  transform-origin: left;
+  transition: transform 180ms var(--ease);
+}
+
+.text-link:hover {
+  color: var(--accent);
+}
+
+.text-link:hover::after,
+.text-link:focus-visible::after {
+  transform: scaleX(1);
+}
+
+.hero-note {
+  margin: 2.8rem 0 0;
+  color: var(--muted);
+  font-size: var(--utility);
+  line-height: 1.5;
+}
+
+.section {
+  padding-block: clamp(5.5rem, 10vw, 9rem);
+  border-top: 1px solid var(--line);
+}
+
+.section-heading {
+  display: grid;
+  grid-template-columns: 1.5fr 0.85fr;
+  gap: 3rem;
+  align-items: end;
+  margin-bottom: clamp(2.7rem, 5vw, 4.5rem);
+}
+
+.section-heading-projects {
+  grid-template-columns: 1.55fr 0.75fr;
+}
+
+.section-kicker {
+  margin: 0 0 1rem;
+  font-size: var(--meta);
+  color: var(--muted);
+  letter-spacing: 0.01em;
+}
+
+.section h2 {
+  margin: 0;
+  max-width: 14ch;
+  font-family: var(--serif);
+  font-size: var(--h2);
+  font-weight: 500;
+  letter-spacing: -0.045em;
+  line-height: 0.97;
+  text-wrap: balance;
+}
+
+.section-intro {
+  margin: 0;
+  max-width: 31rem;
+  color: var(--muted);
+  font-size: 0.98rem;
+  line-height: 1.55;
+}
+
+.project-count {
+  display: flex;
+  justify-content: flex-end;
+  padding-bottom: 0.9rem;
+  border-bottom: 1px solid var(--line);
+  color: var(--muted);
+  font-size: var(--utility);
+  letter-spacing: 0.07em;
+}
+
+.project-list {
+  display: grid;
+  gap: clamp(3rem, 7vw, 6.5rem);
+}
+
+.project {
+  position: relative;
+  display: grid;
+  gap: clamp(2rem, 4vw, 4rem);
+  padding-block: clamp(2.7rem, 6vw, 5.4rem);
+  border-bottom: 1px solid var(--line);
+}
+
+.project:last-child {
+  border-bottom: 0;
+}
+
+.project-featured {
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+}
+
+.project-standard:nth-child(even) {
+  grid-template-columns: minmax(0, 0.86fr) minmax(0, 1.14fr);
+}
+
+.project-standard:nth-child(odd) {
+  grid-template-columns: minmax(0, 1.12fr) minmax(0, 0.88fr);
+}
+
+.project-archive {
+  grid-template-columns: 1.2fr 0.8fr;
+  padding-block: 2.5rem;
+}
+
+.project-rail {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100%;
+}
+
+.project-index {
+  font-size: clamp(3.4rem, 7vw, 7rem);
+  line-height: 0.85;
+  color: var(--accent);
+  font-family: var(--serif);
+  letter-spacing: -0.06em;
+}
+
+.project-meta {
+  display: grid;
+  gap: 1rem;
+  padding-top: 1.8rem;
+  border-top: 1px solid var(--line);
+  margin-top: 2.5rem;
+}
+
+.project-year,
+.project-status {
+  color: var(--muted);
+  font-size: var(--utility);
+  letter-spacing: 0.06em;
+}
+
+.project-copy {
+  align-self: end;
+}
+
+.project h3 {
+  max-width: 15ch;
+  margin: 0;
+  font-family: var(--serif);
+  font-size: clamp(2.6rem, 5.2vw, 5.6rem);
+  font-weight: 500;
+  letter-spacing: -0.05em;
+  line-height: 0.94;
+}
+
+.project-standard h3 {
+  max-width: 19ch;
+}
+
+.project-archive h3 {
+  font-size: clamp(2.1rem, 4vw, 3.7rem);
+}
+
+.project-stack {
+  margin: 1.4rem 0 0;
+  color: var(--accent);
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
+.project-description {
+  max-width: 65ch;
+  margin: 1.6rem 0 0;
+  font-size: var(--body-lg);
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+}
+
+.project-built {
+  margin: clamp(2rem, 4vw, 3.5rem) 0 0;
+  padding: 1.4rem 0 0;
+  border-top: 1px solid var(--line);
+}
+
+.project-built-label {
+  display: block;
+  margin-bottom: 0.9rem;
+  color: var(--muted);
+  font-size: var(--meta);
+}
+
+.project-built-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  columns: 2 18rem;
+  column-gap: 2.5rem;
+}
+
+.project-built-list li {
+  break-inside: avoid;
+  position: relative;
+  padding: 0.25rem 0 0.25rem 1rem;
+  font-size: 0.9rem;
+  line-height: 1.45;
+}
+
+.project-built-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.78em;
+  width: 0.35rem;
+  height: 1px;
+  background: var(--accent);
+}
+
+.project-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 1.5rem;
+  margin-top: 2rem;
+}
+
+.project-link {
+  position: relative;
+  color: var(--ink);
+  text-decoration: none;
+  font-size: 0.86rem;
+}
+
+.project-link::after {
+  content: "↗";
+  margin-left: 0.35rem;
+  color: var(--accent);
+}
+
+.project:hover .project-copy {
+  transform: translateX(3px);
+}
+
+.project-copy {
+  transition: transform 220ms var(--ease);
+}
+
+.projects-empty {
+  padding-block: 2.5rem;
+  color: var(--muted);
+}
+
+.skills-index {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0;
+  border-top: 1px solid var(--line);
+}
+
+.skills-group {
+  padding: 1.4rem clamp(1rem, 2.2vw, 2rem) 0;
+  border-right: 1px solid var(--line);
+}
+
+.skills-group:first-child {
+  padding-left: 0;
+}
+
+.skills-group:last-child {
+  border-right: 0;
+  padding-right: 0;
+}
+
+.skills-group h3 {
+  margin: 0 0 1.4rem;
+  font-size: 0.94rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.skills-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.skills-list li {
+  padding-block: 0.55rem;
+  border-top: 1px solid var(--line);
+  font-size: 0.92rem;
+}
+
+.skills-list li:first-child {
+  border-top: 0;
+}
+
+.education-grid {
+  display: grid;
+  grid-template-columns: 5rem minmax(0, 1fr);
+  gap: 2rem;
+  min-height: 20rem;
+}
+
+.education-timeline {
+  position: relative;
+}
+
+.education-timeline::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0.35rem;
+  width: 1px;
+  background: var(--line);
+}
+
+.education-timeline span {
+  position: absolute;
+  top: 0.2rem;
+  left: 0.15rem;
+  width: 0.4rem;
+  height: 0.4rem;
+  border: 1px solid var(--accent);
+  background: var(--bg);
+  border-radius: 50%;
+}
+
+.education-content {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+  gap: 2rem 4rem;
+  align-items: start;
+}
+
+.education-primary h3 {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: clamp(2.4rem, 5vw, 5rem);
+  font-weight: 500;
+  letter-spacing: -0.05em;
+  line-height: 0.96;
+}
+
+.education-primary p,
+.education-secondary p {
+  margin: 0.85rem 0 0;
+  color: var(--muted);
+}
+
+.education-secondary {
+  padding-top: 0.5rem;
+}
+
+.meta-label {
+  margin: 0 0 0.65rem;
+  color: var(--muted);
+  font-size: var(--meta);
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(0, 0.65fr);
+  gap: clamp(2rem, 6vw, 7rem);
+  align-items: start;
+}
+
+.about-copy {
+  margin: 0;
+  max-width: 52ch;
+  font-family: var(--serif);
+  font-size: clamp(2.1rem, 4.2vw, 4.1rem);
+  line-height: 1.02;
+  letter-spacing: -0.04em;
+}
+
+.about-aside {
+  padding-top: 0.45rem;
+}
+
+.about-aside p:last-child {
+  margin: 0;
+  max-width: 23rem;
+  color: var(--muted);
+}
+
+.section-contact {
+  padding-block: clamp(6.5rem, 13vw, 11rem) clamp(5rem, 8vw, 7rem);
+}
+
+.contact-topline {
+  margin-bottom: 3rem;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(0, 0.65fr);
+  gap: 2rem 5rem;
+  align-items: end;
+}
+
+.contact-grid h2 {
+  max-width: 14ch;
+  font-size: clamp(4rem, 9.5vw, 9.2rem);
+  line-height: 0.9;
+}
+
+.contact-links {
+  display: grid;
+  gap: 0;
+  border-top: 1px solid var(--line);
+}
+
+.contact-link {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: baseline;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--line);
+  text-decoration: none;
+  font-size: 0.94rem;
+  transition: color 160ms ease, padding-left 180ms var(--ease);
+}
+
+.contact-link:hover {
+  padding-left: 0.6rem;
+  color: var(--accent);
+}
+
+.contact-link span:last-child {
+  color: var(--accent);
+  font-size: var(--utility);
+}
+
+.site-footer {
+  padding-block: 1.1rem 1.6rem;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: var(--utility);
+}
+
+.site-footer p {
+  margin: 0;
+}
+
+.noscript-note {
+  padding-bottom: 2rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.hero-reveal {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+html.js-ready .hero-reveal {
+  animation: hero-in 650ms var(--ease) forwards;
+}
+
+html.js-ready .hero-reveal:nth-child(2) {
+  animation-delay: 70ms;
+}
+
+html.js-ready .hero-reveal:nth-child(3) {
+  animation-delay: 140ms;
+}
+
+@keyframes hero-in {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 980px) {
+  .hero {
+    grid-template-columns: 1fr 4fr;
+  }
+
+  .hero-index {
+    grid-column: 1 / -1;
+    order: -1;
+  }
+
+  .hero-main {
+    grid-column: 1 / -1;
+  }
+
+  .hero-side {
+    grid-column: 2 / 3;
+  }
+
+  .skills-index {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .skills-group:nth-child(2) {
+    border-right: 0;
+  }
+
+  .skills-group:nth-child(n + 3) {
+    border-top: 1px solid var(--line);
+  }
+
+  .skills-group:nth-child(3) {
+    padding-left: 0;
+  }
+}
+
+@media (max-width: 760px) {
+  :root {
+    --gutter: 1.05rem;
+  }
+
+  .site-header {
+    background: var(--bg);
+    backdrop-filter: none;
+  }
+
+  .nav-shell {
+    grid-template-columns: 1fr auto;
+  }
+
+  .nav-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  .primary-nav {
+    position: absolute;
+    inset: calc(100% + 1px) 0 auto;
+    display: none;
+    width: 100%;
+    padding: 0.5rem var(--gutter) 0.8rem;
+    background: var(--bg);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .primary-nav.is-open {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+  }
+
+  .primary-nav a,
+  .theme-toggle {
+    padding: 0.8rem 0;
+    text-align: left;
+  }
+
+  .theme-toggle {
+    justify-self: start;
+  }
+
+  .hero {
+    min-height: auto;
+    grid-template-columns: 1fr;
+    padding-block: 4.5rem 5rem;
+  }
+
+  .hero-index,
+  .hero-main,
+  .hero-side {
+    grid-column: 1 / -1;
+  }
+
+  .hero h1 {
+    max-width: 12ch;
+    font-size: clamp(3.5rem, 15vw, 6rem);
+  }
+
+  .hero-side {
+    max-width: 37rem;
+    padding-top: 1rem;
+  }
+
+  .section {
+    padding-block: 5rem;
+  }
+
+  .section-heading,
+  .section-heading-projects,
+  .about-grid,
+  .contact-grid,
+  .education-content {
+    grid-template-columns: 1fr;
+  }
+
+  .section-heading {
+    gap: 1.7rem;
+  }
+
+  .project,
+  .project-featured,
+  .project-standard:nth-child(even),
+  .project-standard:nth-child(odd),
+  .project-archive {
+    grid-template-columns: 1fr;
+  }
+
+  .project {
+    gap: 2.4rem;
+  }
+
+  .project-rail {
+    min-height: auto;
+  }
+
+  .project-meta {
+    margin-top: 1.4rem;
+  }
+
+  .project-built-list {
+    columns: 1;
+  }
+
+  .skills-index {
+    grid-template-columns: 1fr;
+  }
+
+  .skills-group,
+  .skills-group:first-child,
+  .skills-group:last-child,
+  .skills-group:nth-child(3) {
+    padding-left: 0;
+    padding-right: 0;
+    border-right: 0;
+    border-top: 1px solid var(--line);
+  }
+
+  .skills-group:first-child {
+    border-top: 0;
+  }
+
+  .education-grid {
+    grid-template-columns: 1.5rem 1fr;
+    gap: 1.2rem;
+  }
+
+  .contact-grid h2 {
+    font-size: clamp(3.6rem, 16vw, 6rem);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .hero-reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+</style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="site-root">
+    <header class="site-header">
+      <div class="shell nav-shell">
+        <a class="wordmark" href="#top" aria-label="P.K. Monish home">P.K. Monish</a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">
+          <span class="nav-toggle-label">Menu</span>
+        </button>
+        <nav id="primary-nav" class="primary-nav" aria-label="Primary navigation">
+          <a href="#projects">Projects</a>
+          <a href="#skills">Skills</a>
+          <a href="#education">Education</a>
+          <a href="#about">About</a>
+          <a href="#contact">Contact</a>
+          <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Theme: system. Activate to switch theme." aria-live="polite">System</button>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <section id="top" class="hero shell" aria-labelledby="hero-title">
+        <div class="hero-index hero-reveal">P.K.M / 2026</div>
+        <div class="hero-main hero-reveal">
+          <p class="hero-name" id="profile-name">P.K. Monish</p>
+          <h1 id="hero-title">I build AI tools that respect your privacy.</h1>
+        </div>
+        <div class="hero-side hero-reveal">
+          <p id="hero-intro"></p>
+          <div class="action-row" id="hero-actions"></div>
+          <p class="hero-note" id="hero-note"></p>
+        </div>
+      </section>
+
+      <section id="projects" class="section shell" aria-labelledby="projects-title">
+        <div class="section-heading section-heading-projects">
+          <div>
+            <p class="section-kicker">01 / Projects</p>
+            <h2 id="projects-title">Work that rewards curiosity.</h2>
+          </div>
+          <p class="section-intro">A growing project system: the array order is the page order, and visibility plus status control the hierarchy.</p>
+        </div>
+        <div id="project-count" class="project-count" aria-live="polite"></div>
+        <div id="project-list" class="project-list"></div>
+        <div id="projects-empty" class="projects-empty" hidden>
+          <p>No public projects are currently visible.</p>
+        </div>
+      </section>
+
+      <section id="skills" class="section shell" aria-labelledby="skills-title">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">02 / Skills</p>
+            <h2 id="skills-title">A working toolkit, not a scorecard.</h2>
+          </div>
+        </div>
+        <div id="skills-index" class="skills-index"></div>
+      </section>
+
+      <section id="education" class="section shell" aria-labelledby="education-title">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">03 / Education</p>
+            <h2 id="education-title">Learning through engineering.</h2>
+          </div>
+        </div>
+        <div class="education-grid">
+          <div class="education-timeline" aria-hidden="true"><span></span></div>
+          <div id="education-content" class="education-content"></div>
+        </div>
+      </section>
+
+      <section id="about" class="section shell" aria-labelledby="about-title">
+        <div class="section-heading section-heading-about">
+          <div>
+            <p class="section-kicker">04 / About</p>
+            <h2 id="about-title">Learning by building, one system at a time.</h2>
+          </div>
+        </div>
+        <div class="about-grid">
+          <p class="about-copy" id="about-copy"></p>
+          <div class="about-aside">
+            <p class="meta-label">Interests</p>
+            <p id="about-interests"></p>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="section section-contact shell" aria-labelledby="contact-title">
+        <div class="contact-topline">
+          <p class="section-kicker">05 / Contact</p>
+        </div>
+        <div class="contact-grid">
+          <h2 id="contact-title">Let’s make something worth opening twice.</h2>
+          <div class="contact-links" id="contact-links"></div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer shell">
+      <p id="copyright"></p>
+    </footer>
+  </div>
+
+  <noscript>
+    <div class="noscript-note shell">This portfolio uses JavaScript for data-driven project rendering, theme persistence, and small interface enhancements. The site structure remains semantic and navigable without scripting.</div>
+  </noscript>
+
+  <script>
+// ========================================
+// EDIT YOUR PORTFOLIO CONTENT HERE
+// ========================================
+
+const portfolioData = {
+  profile: {
+    name: "P.K. Monish",
+    descriptor: "B.Tech Information Technology student",
+    institution: "Velammal Engineering College, Chennai"
+  },
+  hero: {
+    heading: "I build AI tools that respect your privacy.",
+    intro: "B.Tech IT student at Velammal Engineering College, Chennai. I build AI-powered tools and full-stack web apps.",
+    actions: [
+      { label: "View projects", href: "#projects" },
+      { label: "Download resume", href: "/resume.pdf" }
+    ],
+    note: "Learning by building across AI/ML, full-stack development, systems, and digital electronics."
+  },
+  projects: [
+    {
+      id: "privy-agent",
+      title: "PrivyAgent",
+      stack: ["Python", "On-device AI", "Browser automation"],
+      description: "A privacy-focused AI browser agent for natural-language and voice-based web automation. It uses lightweight on-device AI to understand webpages, perform user-authorized actions, and detect and redact sensitive information such as faces, usernames, passwords, and personal data.",
+      built: [
+        "Natural-language browser automation",
+        "Voice-based interaction",
+        "Lightweight on-device AI processing",
+        "Webpage understanding",
+        "Browser element interaction",
+        "User-authorized actions",
+        "Sensitive-information detection",
+        "Privacy-aware redaction",
+        "Detection and redaction of faces, usernames, passwords, and personal data"
+      ],
+      status: "featured",
+      featured: true,
+      visible: true,
+      year: "2026",
+      links: { live: "", github: "" }
+    },
+    {
+      id: "resumesync-ai",
+      title: "ResumeSync AI",
+      stack: ["Python", "FastAPI", "JavaScript", "HTML/CSS", "pypdf", "OpenRouter AI", "Web Speech API"],
+      description: "An AI mock-interview platform that turns a candidate's resume into a personalized interview. It combines resume extraction, adaptive questioning, voice or typed responses, answer evaluation, and a final performance score.",
+      built: [
+        "Resume PDF upload",
+        "Resume parsing",
+        "Role extraction",
+        "Field extraction",
+        "Experience extraction",
+        "Personalized interview questions",
+        "Project-specific questions",
+        "Voice answers",
+        "Typed answers",
+        "Answer scoring",
+        "Correctness evaluation",
+        "Relevance evaluation",
+        "Reasoning evaluation",
+        "Completeness evaluation",
+        "Mistake explanations",
+        "Adaptive follow-up questions",
+        "Final performance summary",
+        "Score out of 100"
+      ],
+      status: "standard",
+      featured: false,
+      visible: true,
+      year: "2026",
+      links: { live: "", github: "" }
+    }
+  ],
+  skills: {
+    Languages: ["Python", "C", "C++", "JavaScript", "HTML", "CSS"],
+    Frameworks: ["Flask", "FastAPI", "Node.js/Express", "React"],
+    Databases: ["PostgreSQL", "MySQL"],
+    "Tools and other": ["Git", "Linux", "Docker", "scikit-learn", "AI/ML", "Networking"]
+  },
+  education: {
+    institution: "Velammal Engineering College, Chennai",
+    program: "B.Tech Information Technology",
+    years: "2025–2029"
+  },
+  activity: {
+    label: "Activity",
+    text: "Smart India Hackathon 2026 participant"
+  },
+  about: "I'm a first-year Information Technology student who learns by building. I'm curious about AI/ML, full-stack development, systems, and digital electronics, and I use projects to turn that curiosity into working software.",
+  contact: {
+    email: "monipk1604@gmail.com",
+    phone: "+917538801604",
+    linkedin: "https://www.linkedin.com/in/monish-pk-66378a33a",
+    github: "https://github.com/monipk"
+  }
+};
+
+const qs = (selector, root = document) => root.querySelector(selector);
+const qsa = (selector, root = document) => [...root.querySelectorAll(selector)];
+
+const escapeHtml = (value) => String(value)
+  .replaceAll("&", "&amp;")
+  .replaceAll("<", "&lt;")
+  .replaceAll(">", "&gt;")
+  .replaceAll('"', "&quot;")
+  .replaceAll("'", "&#039;");
+
+const safeUrl = (value) => {
+  if (typeof value !== "string" || !value.trim()) return "";
+  if (value.startsWith("#") || value.startsWith("/")) return value;
+  try {
+    const url = new URL(value, window.location.href);
+    return ["http:", "https:", "mailto:", "tel:"].includes(url.protocol) ? url.href : "";
+  } catch {
+    return "";
+  }
+};
+
+// ========================================
+// Content rendering
+// ========================================
+
+function renderProfile() {
+  qs("#profile-name").textContent = portfolioData.profile.name;
+  qs("#hero-title").textContent = portfolioData.hero.heading;
+  qs("#hero-intro").textContent = portfolioData.hero.intro;
+  qs("#hero-note").textContent = portfolioData.hero.note;
+  qs("#about-copy").textContent = portfolioData.about;
+  qs("#about-interests").textContent = "AI/ML · full-stack development · systems · digital electronics";
+
+  const heroActions = qs("#hero-actions");
+  heroActions.innerHTML = portfolioData.hero.actions.map((action) => {
+    const href = safeUrl(action.href);
+    if (!href) return "";
+    return `<a class="text-link" href="${escapeHtml(href)}">${escapeHtml(action.label)}</a>`;
+  }).join("");
+
+  const contactItems = [
+    { label: "Email", value: portfolioData.contact.email, href: `mailto:${portfolioData.contact.email}` },
+    { label: "Phone", value: portfolioData.contact.phone, href: `tel:${portfolioData.contact.phone}` },
+    { label: "LinkedIn", value: "monish-pk-66378a33a", href: portfolioData.contact.linkedin, external: true },
+    { label: "GitHub", value: "monipk", href: portfolioData.contact.github, external: true }
+  ];
+
+  qs("#contact-links").innerHTML = contactItems.map((item) => {
+    const href = safeUrl(item.href);
+    const target = item.external ? ' target="_blank" rel="noreferrer noopener"' : "";
+    return `<a class="contact-link" href="${escapeHtml(href)}"${target}><span>${escapeHtml(item.label)}</span><span>${escapeHtml(item.value)}</span></a>`;
+  }).join("");
+}
+
+function renderProjects() {
+  const visibleProjects = portfolioData.projects.filter((project) => project.visible !== false);
+  const list = qs("#project-list");
+  const empty = qs("#projects-empty");
+
+  qs("#project-count").textContent = `${String(visibleProjects.length).padStart(2, "0")} ${visibleProjects.length === 1 ? "project" : "projects"}`;
+
+  if (!visibleProjects.length) {
+    list.innerHTML = "";
+    empty.hidden = false;
+    return;
+  }
+
+  empty.hidden = true;
+  list.innerHTML = visibleProjects.map((project, index) => {
+    const status = project.status === "featured" || project.featured ? "featured" : project.status === "archive" ? "archive" : "standard";
+    const built = Array.isArray(project.built) ? project.built : [];
+    const stack = Array.isArray(project.stack) ? project.stack.join(" · ") : "";
+    const links = [];
+
+    if (project.links?.live) {
+      const href = safeUrl(project.links.live);
+      if (href) links.push(`<a class="project-link" href="${escapeHtml(href)}" target="_blank" rel="noreferrer noopener">Live Demo</a>`);
+    }
+    if (project.links?.github) {
+      const href = safeUrl(project.links.github);
+      if (href) links.push(`<a class="project-link" href="${escapeHtml(href)}" target="_blank" rel="noreferrer noopener">GitHub</a>`);
+    }
+
+    const projectLabel = status === "featured" ? "Featured" : status === "archive" ? "Archive" : "Standard";
+    const builtBlock = built.length ? `
+      <div class="project-built">
+        <span class="project-built-label">What I built</span>
+        <ul class="project-built-list">
+          ${built.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}
+        </ul>
+      </div>` : "";
+    const linksBlock = links.length ? `<div class="project-links">${links.join("")}</div>` : "";
+
+    return `
+      <article class="project project-${status}" id="${escapeHtml(project.id)}">
+        <div class="project-rail">
+          <div class="project-index" aria-hidden="true">${String(index + 1).padStart(2, "0")}</div>
+          <div class="project-meta">
+            ${project.year ? `<span class="project-year">${escapeHtml(project.year)}</span>` : ""}
+            <span class="project-status">${escapeHtml(projectLabel)}</span>
+          </div>
+        </div>
+        <div class="project-copy">
+          <h3>${escapeHtml(project.title)}</h3>
+          ${stack ? `<p class="project-stack">${escapeHtml(stack)}</p>` : ""}
+          <p class="project-description">${escapeHtml(project.description)}</p>
+          ${builtBlock}
+          ${linksBlock}
+        </div>
+      </article>`;
+  }).join("");
+}
+
+function renderSkills() {
+  qs("#skills-index").innerHTML = Object.entries(portfolioData.skills).map(([group, items]) => `
+    <section class="skills-group" aria-labelledby="skills-${group.toLowerCase().replace(/[^a-z0-9]+/g, "-")}">
+      <h3 id="skills-${group.toLowerCase().replace(/[^a-z0-9]+/g, "-")}">${escapeHtml(group)}</h3>
+      <ul class="skills-list">
+        ${items.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}
+      </ul>
+    </section>`).join("");
+}
+
+function renderEducation() {
+  qs("#education-content").innerHTML = `
+    <div class="education-primary">
+      <p class="meta-label">Education</p>
+      <h3>${escapeHtml(portfolioData.education.institution)}</h3>
+      <p>${escapeHtml(portfolioData.education.program)}</p>
+      <p>${escapeHtml(portfolioData.education.years)}</p>
+    </div>
+    <div class="education-secondary">
+      <p class="meta-label">${escapeHtml(portfolioData.activity.label)}</p>
+      <p>${escapeHtml(portfolioData.activity.text)}</p>
+    </div>`;
+}
+
+function renderFooter() {
+  qs("#copyright").textContent = `© ${new Date().getFullYear()} ${portfolioData.profile.name}`;
+}
+
+// ========================================
+// Theme and navigation
+// ========================================
+
+const themeKey = "pm-theme";
+const themes = ["system", "light", "dark"];
+const themeLabels = { system: "System", light: "Light", dark: "Dark" };
+
+function getThemePreference() {
+  const saved = localStorage.getItem(themeKey);
+  return themes.includes(saved) ? saved : "system";
+}
+
+function applyTheme(theme, persist = true) {
+  const resolved = theme === "system"
+    ? (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light")
+    : theme;
+
+  document.documentElement.dataset.theme = theme;
+  document.documentElement.style.setProperty("--resolved-theme", resolved);
+
+  if (persist) {
+    if (theme === "system") localStorage.removeItem(themeKey);
+    else localStorage.setItem(themeKey, theme);
+  }
+
+  const control = qs("#theme-toggle");
+  control.textContent = themeLabels[theme];
+  control.setAttribute("aria-label", `Theme: ${themeLabels[theme]}. Activate to switch theme.`);
+  control.title = `Theme: ${themeLabels[theme]}`;
+
+  qs('meta[name="theme-color"]').setAttribute("content", resolved === "dark" ? "#141414" : "#FAFAF8");
+}
+
+function bindTheme() {
+  const media = window.matchMedia("(prefers-color-scheme: dark)");
+  applyTheme(getThemePreference(), false);
+
+  qs("#theme-toggle").addEventListener("click", () => {
+    const current = getThemePreference();
+    const next = themes[(themes.indexOf(current) + 1) % themes.length];
+    applyTheme(next, true);
+  });
+
+  media.addEventListener?.("change", () => {
+    if (getThemePreference() === "system") applyTheme("system", false);
+  });
+}
+
+function bindMobileNav() {
+  const toggle = qs(".nav-toggle");
+  const nav = qs("#primary-nav");
+
+  toggle.addEventListener("click", () => {
+    const open = nav.classList.toggle("is-open");
+    toggle.setAttribute("aria-expanded", String(open));
+  });
+
+  qsa("#primary-nav a").forEach((link) => {
+    link.addEventListener("click", () => {
+      nav.classList.remove("is-open");
+      toggle.setAttribute("aria-expanded", "false");
+    });
+  });
+}
+
+function bindSectionState() {
+  const links = qsa("#primary-nav a");
+  const sections = links
+    .map((link) => qs(link.getAttribute("href")))
+    .filter(Boolean);
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      const id = `#${entry.target.id}`;
+      links.forEach((link) => {
+        if (link.getAttribute("href") === id) link.setAttribute("aria-current", "page");
+        else link.removeAttribute("aria-current");
+      });
+    });
+  }, { rootMargin: "-45% 0px -45% 0px", threshold: 0 });
+
+  sections.forEach((section) => observer.observe(section));
+}
+
+function init() {
+  document.documentElement.classList.add("js-ready");
+  renderProfile();
+  renderProjects();
+  renderSkills();
+  renderEducation();
+  renderFooter();
+  bindTheme();
+  bindMobileNav();
+  bindSectionState();
+}
+
+init();
+
+</script>
+</body>
+</html>
