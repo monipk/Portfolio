@@ -2,7 +2,7 @@
 
 A single-page personal portfolio for Monish, a student developer who builds Android apps, AI and ML systems, and full stack web applications.
 
-**Live site:** https://pk-monish-portfolio-16.vercel.app/
+**Live site:** https://pk-monish-portfolio.vercel.app/
 
 ## Overview
 
