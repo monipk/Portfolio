@@ -2,7 +2,7 @@
 
 A single-page personal portfolio for Monish, a student developer who builds Android apps, AI and ML systems, and full stack web applications.
 
-**Live site:** https://YOUR_USERNAME.github.io/YOUR_REPO/
+**Live site:** https://github.com/monipk
 
 ## Overview
 
