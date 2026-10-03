@@ -74,8 +74,8 @@ HTML, CSS and Google Fonts. No JavaScript, no dependencies.
 
 - Email: monipk1604@gmail.com
 - Phone: 7538801604
-- GitHub: https://github.com/YOUR_USERNAME
-- LinkedIn: https://www.linkedin.com/in/YOUR_LINKEDIN_ID
+- GitHub: https://github.com/monipk
+- LinkedIn: https://www.linkedin.com/in/monish-pk-66378a33a/
 
 ## License
 
